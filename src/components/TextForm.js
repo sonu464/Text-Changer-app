@@ -1,4 +1,5 @@
 import React, { useState } from "react"; // Here useState is the hook
+import styles from "./TextForm.module.css";
 
 function TextForm(props) {
   const handleLowerClick = () => {
@@ -16,8 +17,12 @@ function TextForm(props) {
     setText(newText);
   };
 
-  // Copy text to clipboard
-  const handleCopyClick = () => {};
+  // Copy text to clipboard -------------------------
+  const handleCopyClick = () => {
+    let box = document.getElementById("mybox");
+    box.select();
+    navigator.clipboard.writeText(text);
+  };
 
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -41,16 +46,28 @@ function TextForm(props) {
             onChange={handleOnChange}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+        <button
+          className={`${"btn btn-primary mx-1"} ${styles.button}`}
+          onClick={handleUpClick}
+        >
           Convert Text to UpperCase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLowerClick}>
+        <button
+          className={`${"btn btn-primary mx-1"} ${styles.button}`}
+          onClick={handleLowerClick}
+        >
           Convert Text to LowerCase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+        <button
+          className={`${"btn btn-primary mx-1"} ${styles.button}`}
+          onClick={handleClearClick}
+        >
           Clear Text
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopyClick}>
+        <button
+          className={`${"btn btn-primary mx-1"} ${styles.button}`}
+          onClick={handleCopyClick}
+        >
           Copy
         </button>
       </div>
