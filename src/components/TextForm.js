@@ -17,6 +17,12 @@ function TextForm(props) {
     setText(newText);
   };
 
+  // Remove Extra Spaces ---------------------
+  const handleSpaceClick = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+
   // Copy text to clipboard -------------------------
   const handleCopyClick = () => {
     let box = document.getElementById("mybox");
@@ -58,17 +64,28 @@ function TextForm(props) {
         >
           Convert Text to LowerCase
         </button>
-        <button
-          className={`${"btn btn-primary mx-1"} ${styles.button}`}
-          onClick={handleClearClick}
-        >
-          Clear Text
-        </button>
+
         <button
           className={`${"btn btn-primary mx-1"} ${styles.button}`}
           onClick={handleCopyClick}
         >
           Copy
+        </button>
+
+        {/* to handle spaces */}
+        <button
+          className={`${"btn btn-primary mx-1"} ${styles.button}`}
+          onClick={handleSpaceClick}
+        >
+          Remove Extra Space
+        </button>
+
+        {/*  to clear text */}
+        <button
+          className={`${"btn btn-primary mx-1"} ${styles.button}`}
+          onClick={handleClearClick}
+        >
+          Clear Text
         </button>
       </div>
       <div className="container my-4">
